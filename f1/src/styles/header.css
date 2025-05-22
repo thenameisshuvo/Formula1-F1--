@@ -1,0 +1,70 @@
+.f1-logo {
+    font-family: 'f1-bold', 'Arial Black', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 0.12em;
+    text-shadow: 0 2px 8px #e00601, 0 0 16px charcoalgray, 0 0 32px #e00601;
+    background: linear-gradient(90deg, #fff 70%, #ffd700 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin-right: 2.5rem;
+}
+
+.header {
+    background: linear-gradient(90deg, #e00601 0%, #23272f 100%);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    width: auto;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 4px 24px 0 #e00601, 0 2px 12px rgba(0,0,0,0.10);
+    border-bottom: 3px solid #ffd700;
+}
+.header-btn {
+    color: #e00601;
+    background: #fff;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    font-family: "f1-bold";
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    border: 2px solid #e00601;
+    margin: 0 0.5rem;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
+    box-shadow: 0 2px 8px rgba(224,6,1,0.08);
+    position: relative;
+    overflow: hidden;
+}
+.header-btn::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, #ffd700 0%, #e00601 100%);
+    border-radius: 2px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+.header-btn:hover {
+    background: #e00601;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(224,6,1,0.18);
+    border: 2px solid #ffd700;
+}
+.header-btn:hover::before {
+    opacity: 1;
+}
+@media screen and (max-width: 750px) {
+    .header{
+        display: none;
+    }
+}

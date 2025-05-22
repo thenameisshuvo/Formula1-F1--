@@ -1,0 +1,109 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically for better balance */
+    align-items: center;
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(../Assets/pexels-jonathanborba-29406740.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 100dvh; /* Dynamic viewport height */
+    position: relative;
+    padding: 2rem 1rem; /* Adjusted padding */
+    box-sizing: border-box;
+    text-align: center; /* Ensure text within .home is centered */
+}
+
+.animated-heading {
+    font-size: clamp(1.8rem, 7vw, 3.5rem); /* Default for larger screens */
+    font-family: 'f1-black', sans-serif;
+    color: transparent; /* For gradient text */
+    background: linear-gradient(90deg, #fff 60%, #ffd700 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 8px 30px rgba(128, 1, 1, 0.6);
+    margin-top: clamp(2rem, 10vh, 5rem); /* Responsive vertical margin */
+    margin-bottom: clamp(1.5rem, 8vh, 4rem);
+    letter-spacing: 0.05em;
+    z-index: 2;
+    overflow: hidden;
+    white-space: nowrap; /* Crucial for typing animation */
+    border-right: 0.1em solid #fff; /* Adjusted border for scaling */
+    max-width: 90%; /* Prevent heading from being too wide */
+    animation:
+        typing 2.5s steps(30, end) 1s 1 normal both,
+        blink-caret 0.75s step-end infinite;
+}
+
+.data {
+    display: flex;
+    flex-direction: column; /* Default to column for mobile-first approach */
+    align-items: center; /* Center items in column layout */
+    gap: 1.5rem; /* Adjusted gap */
+    width: 100%;
+    max-width: 900px; /* Max width for data content */
+    margin-top: 1rem;
+}
+
+/* Medium screens and up - switch .data to row */
+@media screen and (min-width: 768px) {
+    .data {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2vw;
+    }
+    .animated-heading {
+        letter-spacing: 0.08em;
+        border-right-width: 0.15em;
+    }
+}
+
+/* Smaller screens - specific adjustments */
+@media screen and (max-width: 767px) {
+    .home {
+        justify-content: center; /* Ensure content is centered */
+        padding: 1.5rem 0.8rem;
+    }
+    .animated-heading {
+        font-size: clamp(1.5rem, 6vw, 2.5rem); /* Smaller for tablets/large phones */
+        margin-top: 15vh; 
+        max-width: 95%;
+        letter-spacing: 0.04em;
+        border-right-width: 0.09em;
+    }
+}
+
+/* Very small screens - fine-tuning */
+@media screen and (max-width: 480px) {
+    .home {
+        background-position: center top; /* Prioritize top of image if cropped */
+        padding: 1rem 0.5rem;
+    }
+    .animated-heading {
+        font-size: clamp(1.2rem, 5.5vw, 2rem); /* Even smaller for small phones */
+        letter-spacing: 0.03em;
+        border-right-width: 0.07em;
+        margin-top: 18vh; /* Adjusted margin slightly */
+    }
+    .data {
+        gap: 1rem;
+    }
+}
+
+/* Parallax effect for larger screens with pointer devices */
+@media (pointer: fine) and (min-width: 900px) {
+    .home {
+        background-attachment: fixed;
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
