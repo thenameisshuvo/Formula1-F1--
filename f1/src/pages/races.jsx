@@ -16,7 +16,7 @@ const Races = ({ year, formatDate }) => {
       setSeason(data)
     }
     fetchSeasons()
-  }, [])
+  }, [seasonYear])
 
   const getTotalRounds = () => {
     return season.Races ? season.Races.length : 0

@@ -4,27 +4,25 @@
 .nav-active{
     display: none;
 }
-
 .display-btn {
-    /* If using an SVG icon, you might set its color here or embed it directly */
-    /* For PNG, ensure it's a light-colored icon on a transparent background */
-    background-image: url("../Assets/option_2782981.png"); /* Keep your icon, or replace with a white/light version */
-    background-size: 60%; /* Adjust if icon looks too big/small */
+    background-image: url("../Assets/option_2782981.png");
+    background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
-    width: 3rem; /* 48px */
-    height: 3rem; /* 48px */
-    border-radius: 0.75rem; /* Slightly more rounded */
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
     border: 2px solid #e00601ff;
-    padding: 0; /* Remove padding if background-size controls icon spacing */
+    padding: 0;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: rgba(30, 31, 38, 0.9);
     box-shadow: 0 4px 15px rgba(224, 6, 1, 0.3);
-    position:static;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    right: auto;
+    z-index: 1100;
 }
 
 .display-btn:hover {
@@ -90,5 +88,17 @@
         background-color: rgba(30, 31, 38, 0.8);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .display-btn {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        right: auto;
+        width: 2rem;
+        height: 2rem;
+        z-index: 1200;
     }
 }

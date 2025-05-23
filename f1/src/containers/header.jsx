@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/header.css";
-import Text from "../components/text.jsx";
 
 const Header = ({ year }) => {
   return (

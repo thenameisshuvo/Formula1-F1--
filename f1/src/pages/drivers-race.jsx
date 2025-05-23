@@ -19,7 +19,7 @@ const Drivers = ({ year }) => {
       }
     }
     fetchDriverStandings()
-  }, [seasonYear])
+  }, [seasonYear, raceId])
 
   return (
     <div>
