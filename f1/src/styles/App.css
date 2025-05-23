@@ -3,20 +3,22 @@
   background: linear-gradient(135deg, #181a20 0%, #23272f 100%);
   min-height: 100vh;
 }
-.season-header{
+
+.season-header {
   border-bottom: 2px solid #e00601;
   width: auto;
-  padding: 2rem 1rem;
+  padding: 1rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(30,31,38,0.95);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: rgba(30, 31, 38, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 0 0 1rem 1rem;
-  gap: 1.5rem;
+  gap: 1rem;
+  font-size: 14px;
 }
 
-.season-header-btn{
+.season-header-btn {
   color: #e00601;
   background: #fff;
   text-decoration: none;
@@ -28,28 +30,28 @@
   letter-spacing: 0.05em;
   border: 2px solid #e00601;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 8px rgba(224,6,1,0.05);
+  box-shadow: 0 2px 8px rgba(224, 6, 1, 0.05);
 }
 
-.season-header-btn:hover{
+.season-header-btn:hover {
   background: #e00601;
   color: #fff;
-  box-shadow: 0 4px 16px rgba(224,6,1,0.15);
+  box-shadow: 0 4px 16px rgba(224, 6, 1, 0.15);
   text-decoration: none;
 }
 
-.not-found-page{
+.not-found-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 60vh;
-  background: rgba(30,31,38,0.8);
+  background: rgba(30, 31, 38, 0.8);
   border-radius: 1rem;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
 }
 
-table{
+table {
   margin: 0 auto 2rem auto;
   border-collapse: collapse;
   width: 90%;
@@ -57,10 +59,10 @@ table{
   background: #23272f;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-th{
+th {
   font-family: "f1-black";
   text-align: left;
   background-color: #e00601;
@@ -75,7 +77,7 @@ td, th {
   padding: 0.7rem 1rem;
 }
 
-td{
+td {
   border-left: 0;
   border-right: 0;
   text-align: left;
@@ -84,45 +86,53 @@ td{
   color: #fff;
 }
 
+/* Responsive Design */
 @media screen and (max-width: 750px) {
-  .season-header{
-      margin-top: 6rem;
-      margin-bottom: 3rem;
+  .season-header {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    gap: 0.5rem;
+  }
+
+  .season-header-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin: 0 0.3rem;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .season-header{
-      font-size: 15px;
+  .season-header {
+    font-size: 12px;
   }
 }
 
-@media screen and (max-width: 650px){
-  th {
-    font-size: 14px;
-  }
-
-  td {
+@media screen and (max-width: 650px) {
+  th, td {
     font-size: 14px;
   }
 }
 
-@media screen and (max-width: 570px){
-  th {
-    font-size: 12px;
-  }
-
-  td {
+@media screen and (max-width: 570px) {
+  th, td {
     font-size: 12px;
   }
 }
 
-@media screen and (max-width: 500px){
-  .season-header{
-    font-size: 12px;
+@media screen and (max-width: 500px) {
+  .season-header {
+    font-size: 10px;
     width: 100%;
-    padding: 0.5rem 0.2rem;
+    padding: 0.3rem 0.1rem;
+    gap: 0.3rem;
   }
+
+  .season-header-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+  }
+
   th, td {
     font-size: 10px;
     padding: 0.3rem 0.5rem;

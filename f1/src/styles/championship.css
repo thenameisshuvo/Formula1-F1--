@@ -1,4 +1,4 @@
-.championship-container{
+.championship-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,21 +8,30 @@
     border-radius: 1rem;
     box-shadow: 0 2px 12px rgba(0,0,0,0.10);
     padding: 2rem 1.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.btns{
+.btns {
     border: 2px solid #e00601;
-    margin: 0.7rem;
-    padding: 0.7rem 1.5rem;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 2rem;
     cursor: pointer;
     font-family: "f1-bold";
     background: #fff;
     color: #e00601;
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 0.04em;
     box-shadow: 0 2px 8px rgba(224,6,1,0.07);
     transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+@media screen and (max-width: 600px) {
+    .btns {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.5rem;
+    }
 }
 
 .btns:hover{
@@ -47,7 +56,7 @@
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-family: "f1-bold";
-    font-size: 0.9rem;
+    font-size: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border: 2px solid #e00601;

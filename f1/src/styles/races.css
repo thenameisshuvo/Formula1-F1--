@@ -1,4 +1,4 @@
-.races-container{
+.races-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,20 +6,30 @@
     gap: 0.2rem;
     margin: auto;
     padding: 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.race-item{
-    padding: 1rem;
+.race-item {
+    padding: 0.5rem;
     border: 2px solid #ffff;
     border-radius: 0.5rem;
     border-left: none;
     border-bottom: none;
-    margin: 1rem;
+    margin: 0.5rem;
     transition: 0.5s;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+    .race-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
 
 .race-item:hover{
