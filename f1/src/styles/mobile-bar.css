@@ -16,7 +16,7 @@
     padding: 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: rgba(30, 31, 38, 0.9);
+    background-color:whitesmoke;
     box-shadow: 0 4px 15px rgba(224, 6, 1, 0.3);
     position: fixed;
     top: 1.25rem;
