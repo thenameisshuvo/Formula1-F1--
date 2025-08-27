@@ -38,9 +38,10 @@ const NextRace = ({ formatDate }) => {
 
   if (loading) return <div>Loading...</div>
   if (error) return <div>{error}</div>
+  if (!nextRace) return <div>No upcoming race found.</div>
 
   const convertToLocaleTime = (time) => {
-    const date = new Date(nextRace.date + " " + time)
+  const date = new Date(nextRace.date + " " + time)
     return date.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
@@ -54,7 +55,7 @@ const NextRace = ({ formatDate }) => {
         <h3 className="circuit">
           {nextRace.raceName} {nextRace.season}
         </h3>
-        <p>{nextRace.Circuit.circuitName}</p>
+        <p>{nextRace?.Circuit?.circuitName || ""}</p>
       </div>
       <div className="sessions-container">
         {nextRace.FirstPractice && (
@@ -92,14 +93,14 @@ const NextRace = ({ formatDate }) => {
             <span className="time">{convertToLocaleTime(nextRace.Sprint.time)}</span>
           </p>
         )}
-        <p className="sessions-data">
+  <p className="sessions-data">
           <span>RACE </span>
           <span className="date-info">{formatDate(nextRace.date)}</span>
           <span className="time">{nextRace.localTime}</span>
         </p>
       </div>
       <div className="location">
-        <span>{nextRace.Circuit.Location.locality}, {nextRace.Circuit.Location.country}</span>
+  <span>{nextRace?.Circuit?.Location?.locality}, {nextRace?.Circuit?.Location?.country}</span>
       </div>
     </div>
   )

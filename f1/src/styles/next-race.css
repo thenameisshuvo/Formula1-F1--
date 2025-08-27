@@ -1,50 +1,65 @@
 .next-race-container{
-    border-radius: 0.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: start;
-    margin: 1rem;
-    gap: 5rem;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 1rem auto;
+    padding: 1.25rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: var(--shadow-md);
 }
 
 .sessions-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
+    gap: 0.5rem;
 }
 
 .info{
     display: flex;
     flex-direction: column;
-    text-align: justify;
+    text-align: left;
+    gap: 0.25rem;
 }
 
 .time{
     background-color: #39383eff;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
 }
 
 .date-info{
     font-family: "f1-wide";
     background-color: #fefffeff;
     color: #15141fff;
-    border-radius: 0.5rem;
-    padding: 1rem;
+    border-radius: 0.375rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .sessions-data{
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
     align-items: center;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 900px) {
     .next-race-container{
         flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .sessions-container{
+        align-items: flex-start;
+    }
+    .sessions-data{
+        justify-content: flex-start;
     }
 }

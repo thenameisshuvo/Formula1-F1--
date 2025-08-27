@@ -1,11 +1,43 @@
 import axios from "axios";
 
-const apiUrl = "https://ergast.com/api/f1";
+// Provider order:
+// 1) REACT_APP_F1_API_BASE if provided (configure your own provider here)
+// 2) Community mirror (non-Ergast host)
+// 3) Ergast original (last resort)
+const envBase = (process.env.REACT_APP_F1_API_BASE || "").replace(/\/$/, "");
+const API_BASES = [
+  envBase || null,
+  "https://api.jolpi.ca/ergast/f1",
+  "https://ergast.com/api/f1",
+].filter(Boolean);
+
 const limit = 100;
+
+// Generic GET that tries primary then fallback
+const getFromApis = async (relativePath, config = {}) => {
+  let lastError;
+  for (const base of API_BASES) {
+    try {
+      const response = await axios.get(`${base}${relativePath}`, {
+        timeout: 15000,
+        headers: { Accept: "application/json" },
+        ...config,
+      });
+      // Basic sanity check
+      if (response && response.data) return response;
+      lastError = new Error("Empty response data");
+    } catch (err) {
+      lastError = err;
+      // Try next base
+      // console.warn(`API call failed for ${base}${relativePath}:`, err?.message || err);
+    }
+  }
+  throw lastError;
+};
 
 export const getSeasons = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/seasons.json?limit=${limit}`);
+    const response = await getFromApis(`/seasons.json?limit=${limit}`);
     const seasonsData = response.data.MRData.SeasonTable.Seasons;
     return seasonsData;
   } catch (error) {
@@ -16,7 +48,7 @@ export const getSeasons = async () => {
 
 export const getOneSeason = async (year) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}.json`);
+    const response = await getFromApis(`/${year}.json`);
     const seasonData = response.data.MRData.RaceTable;
     return seasonData;
   } catch (error) {
@@ -27,7 +59,7 @@ export const getOneSeason = async (year) => {
 
 export const getCurrentSeason = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/current.json`);
+    const response = await getFromApis(`/current.json`);
     const seasonData = response.data.MRData.RaceTable;
     return seasonData;
   } catch (error) {
@@ -38,7 +70,7 @@ export const getCurrentSeason = async () => {
 
 export const getDriverStandings = async (year) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/driverStandings.json`);
+    const response = await getFromApis(`/${year}/driverStandings.json`);
     const standingsData = response.data.MRData.StandingsTable.StandingsLists;
     return standingsData;
   } catch (error) {
@@ -49,7 +81,9 @@ export const getDriverStandings = async (year) => {
 
 export const getDriverStandingsPerRace = async (year, raceId) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/${raceId}/driverStandings.json`);
+    const response = await getFromApis(
+      `/${year}/${raceId}/driverStandings.json`
+    );
     const standingsData = response.data.MRData.StandingsTable.StandingsLists;
     return standingsData;
   } catch (error) {
@@ -60,7 +94,7 @@ export const getDriverStandingsPerRace = async (year, raceId) => {
 
 export const getConstructorStandings = async (year) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/constructorStandings.json`);
+    const response = await getFromApis(`/${year}/constructorStandings.json`);
     const standingsData = response.data.MRData.StandingsTable.StandingsLists;
     return standingsData;
   } catch (error) {
@@ -71,7 +105,9 @@ export const getConstructorStandings = async (year) => {
 
 export const getConstructorStandingsPerRace = async (year, raceId) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/${raceId}/constructorStandings.json`);
+    const response = await getFromApis(
+      `/${year}/${raceId}/constructorStandings.json`
+    );
     const standingsData = response.data.MRData.StandingsTable.StandingsLists;
     console.log(standingsData);
     return standingsData;
@@ -83,7 +119,7 @@ export const getConstructorStandingsPerRace = async (year, raceId) => {
 
 export const getQualyResult = async (year, raceId) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/${raceId}/qualifying.json`);
+    const response = await getFromApis(`/${year}/${raceId}/qualifying.json`);
     const qualyData = response.data.MRData.RaceTable.Races;
     console.log(qualyData);
     return qualyData;
@@ -95,7 +131,7 @@ export const getQualyResult = async (year, raceId) => {
 
 export const getRaceResult = async (year, raceId) => {
   try {
-    const response = await axios.get(`${apiUrl}/${year}/${raceId}/results.json`);
+    const response = await getFromApis(`/${year}/${raceId}/results.json`);
     const raceData = response.data.MRData.RaceTable.Races;
     console.log(raceData);
     return raceData;
@@ -107,8 +143,8 @@ export const getRaceResult = async (year, raceId) => {
 
 export const getNextRace = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/current/next.json`);
-    const raceData = response.data.MRData.RaceTable.Races[0];
+    const response = await getFromApis(`/current/next.json`);
+    const raceData = response.data.MRData.RaceTable.Races?.[0] || null;
     return raceData;
   } catch (error) {
     console.error(error);

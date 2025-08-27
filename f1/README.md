@@ -29,16 +29,37 @@ To set up the project locally, follow these steps:
 
 3. Install the dependencies:
 
+   
    ```bash
    npm install
    ```
 
 4. Start the development server:
+
    ```bash
    npm start
    ```
 
 The application will be available at `http://localhost:3000/`.
+
+## Configure data provider (optional)
+
+This app was built on the Ergast API shape. We now default to a non-Ergast mirror and allow switching providers via env vars.
+
+1. Copy `.env.example` to `.env` in the `f1` folder.
+2. Set one of the providers:
+    - Jolpi mirror (no key, Ergast-compatible):
+       - `REACT_APP_F1_API_BASE=https://api.jolpi.ca/ergast/f1`
+    - Ergast original (last resort):
+       - `REACT_APP_F1_API_BASE=https://ergast.com/api/f1`
+    - OpenF1 (free, different schema; adapter work required):
+       - `REACT_APP_F1_API_BASE=https://api.openf1.org/v1`
+    - API-Sports (full coverage; key required; adapter work required):
+       - `REACT_APP_F1_API_BASE=https://v1.formula-1.api-sports.io`
+       - `REACT_APP_APISPORTS_KEY=your_key_here`
+3. Restart the dev server after changing `.env`.
+
+The data layer tries the env base first, then Jolpi, then Ergast.
 
 ## Usage
 

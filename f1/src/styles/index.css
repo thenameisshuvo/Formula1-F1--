@@ -38,6 +38,37 @@ body {
   min-height: 100vh;
 }
 
+:root {
+  --color-bg: #181a20;
+  --color-bg-2: #23272f;
+  --color-surface: #1f232b;
+  --color-surface-2: #2a2f3a;
+  --color-text: #ffffff;
+  --color-muted: #b8c1ce;
+  --color-primary: #e00601;
+  --color-accent: #ffd700;
+  --radius: 12px;
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-md: 0 6px 18px rgba(0,0,0,0.28);
+  --shadow-sm: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 li{
 	list-style: none;
 }

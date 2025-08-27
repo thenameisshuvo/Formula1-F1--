@@ -1,88 +1,90 @@
+/* Container */
 .races-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.2rem;
-    margin: auto;
+    gap: 0.75rem;
+    margin: 0 auto;
     padding: 1rem;
-    max-width: 100%;
+    max-width: 1100px;
     box-sizing: border-box;
 }
 
-.race-item {
-    padding: 0.5rem;
-    border: 2px solid #ffff;
-    border-radius: 0.5rem;
-    border-left: none;
-    border-bottom: none;
-    margin: 0.5rem;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Grid list with equal-sized cards */
+.races-container > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
-    flex-wrap: wrap;
 }
 
-@media screen and (max-width: 600px) {
-    .race-item {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+/* Card */
+.race-item {
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    margin: 0;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    min-height: 160px;
 }
 
 .race-item:hover{
-    border: 2px solid #e00700ff;
-    border-left: none;
-    border-bottom: none;
-    transform: scale(1.1);
-    transition: 0.5s;
+    border-color: #e00700ff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .circuit{
     font-family: "f1-bold";
+    margin: 0;
 }
 
 .round{
     color: #e00700ff;
     font-family: "f1-black";
+    margin: 0;
 }
 
 .date{
     font-family: "f1-wide";
     background-color: #fefffeff;
     color: #15141fff;
-    padding: 2rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .qualy-btn{
     background-color: #e00700ff;
     color: #ffff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid #ffffff;
-    border-top: 0;
-    border-left: 0;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #ffffff33;
     border-radius: 0.5rem;
-    transition: 0.5s;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     font-family: "f1-bold";
 }
 
 .qualy-btn:hover{
     background-color: #ffff;
-    border: 1px solid #e00700ff;
+    border-color: #e00700ff;
     color: #e00700ff;
-    border-top: 0;
-    border-left: 0;
-    transition: 0.5s;
-}
-
-.buttons{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
 }
 
 .url{
@@ -94,9 +96,14 @@
     text-decoration: underline;
 }
 
-@media screen and (max-width: 1450px) {
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+    .races-container {
+        padding: 0.75rem;
+    }
     .race-item{
-        display: flex;
-        flex-direction: column;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        min-height: 150px;
     }
 }
